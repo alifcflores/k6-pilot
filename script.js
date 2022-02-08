@@ -1,7 +1,20 @@
-import http from 'k6/http';
-import { sleep } from 'k6';
+import login from './plataforma/financeiro/login.js';
+import {group} from 'k6';
+
+export const options = {
+  stages: [
+    { duration: '30s', target: 2000 },
+    { duration: '1m30s', target: 1000 },
+    { duration: '20s', target: 0 },
+  ],
+};
 
 export default function () {
-  http.get('https://test.k6.io');
-  sleep(1);
+  group('Plataforma', ()=>{
+    login();
+  });
+
+  group('Imobiliaria', ()=>{
+
+  });
 }
