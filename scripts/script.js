@@ -1,10 +1,15 @@
-import login from './plataforma/financeiro/login.js';
+import login from './plataforma/login.js';
 import {group} from 'k6';
 
 export const options = {
+  // ext: {
+  //   loadimpact: {
+  //     projectID: 3570530,
+  //   }
+  // },
   stages: [
-    { duration: '30s', target: 20 },
-    { duration: '1m30s', target: 10 },
+    { duration: '1m30s', target: 20 },
+    { duration: '1m', target: 10 },
     { duration: '20s', target: 0 },
   ],
 };
