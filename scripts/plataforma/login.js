@@ -1,7 +1,16 @@
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 
-export default function () {
+export const options = {
+  stages: [
+    { duration: '30s', target: 100 },
+    { duration: '30s', target: 250},
+    { duration: '1m', target: 500},
+    { duration: '20s', target: 0 },
+  ],
+};
+
+export default function() {
 
   const res = http.get('https://dev.credpago.com/admin/index.php',{
     cookies: {
